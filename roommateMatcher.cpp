@@ -27,18 +27,18 @@ public:
         assert(mBuddies.size() < kMaxBuddyCount);
 
         // Don't add duplicate buddy
-//        bool found = false;
-//        for(const std::string &existingBuddy : mBuddies)
-//        {
-//            if(buddyName.compare(existingBuddy) == 0)
-//            {
-//                found = true;
-//            }
-//        }
-//        if(found)
-//        {
-//            return false;
-//        }
+        bool found = false;
+        for(const std::string &existingBuddy : mBuddies)
+        {
+            if(buddyName.compare(existingBuddy) == 0)
+            {
+                found = true;
+            }
+        }
+        if(found)
+        {
+            return false;
+        }
 
         mBuddies.emplace_back(buddyName);
         return true;
@@ -337,7 +337,6 @@ private:
             if(assignedStudentCount >= allStudentInfos.size())
                 break;
         }
-        //std::cout <<"done. score:" << mScore <<"\n";
     }
 
     std::vector<Room> mRooms;
@@ -370,8 +369,6 @@ DecaConference::DecaConference():mStudentCount(0),mRoomCount(0)
 {
 #if true
     readInputFile();
-    // initialize mStudents.
-    // Read input file
 #else
     generateSimulationData();
 #endif
@@ -390,7 +387,6 @@ void DecaConference::readInputFile() {
     for (int i = 0; i < mStudentCount; i++) {
         row.clear();
         getline(fin, line);
-//            cout << "line: " << line << "\n";
         std::stringstream s(line);
         while (getline(s, word, ',')) {
             row.push_back(word);
@@ -403,85 +399,13 @@ void DecaConference::readInputFile() {
         int numBuddies = std::stoi(row[7]);
         for (int j = 0; j < numBuddies; j++) {
             std::string bname = row[8+3*j];
-//            std::cout << "Buddy name: " << bname << "\n";
-//            int buddyID = stoi(row[10+3*j]);
             mAllStudentInfos[studentID].requestBuddy(bname);
-
-//            std::cout << "student: " << name << ", ";
-//            std::cout << "buddy name: " << bname << ", Buddy id: " << buddyID << "\n";
         }
     }
-//        std::cout << row[1] << "\n"; // studentID
-//        std::cout << row[2] << "\n"; // name
-//        std::cout << row[6] << "\n"; // grade
-//        std::cout << row[7] << "\n"; // numBuddies
-//        std::cout << row[8] << "\n"; // buddy1 name
-//        std::cout << row[9] << "\n"; // buddy1 grade
-//        std::cout << row[10] << "\n"; // buddy1 id
-//        std::cout << row[11] << "\n"; // buddy2 name
-//        std::cout << row[12] << "\n"; // buddy2 grade
-//        std::cout << row[13] << "\n"; // buddy2 id
-//        std::cout << row[14] << "\n"; // buddy3 name
-//        std::cout << row[15] << "\n"; // buddy3 grade
-//        std::cout << row[16] << "\n"; // buddy3 id
+// row[index] and info associated with it
+// {0: email, 1: studentID, 2: name, 6: grade, 7: numBuddies,
+// (8, 11, 14): buddy names, (9, 12, 15): buddy grades, (10, 13, 16): buddy IDs}
     std::cout << "\tDONE\n";
-}
-
-
-void DecaConference::generateSimulationData()
-{
-    mStudentCount = 101;
-    std::cout <<"Generating simulation data for " << mStudentCount << " students ...";
-
-    mRoomCount = (mStudentCount + kBedsPerRoom - 1) / kBedsPerRoom;
-
-    for(StudentID studentID = 0; studentID < mStudentCount; studentID++)
-    {
-        std::ostringstream name;
-        name << "Student" << studentID;
-
-        int grade = rand() % 4 + 9;
-
-        mAllStudentInfos.emplace_back(name.str(), grade, studentID);
-
-        // randomly generate buddy list
-        int buddyCount = rand() % kBedsPerRoom;
-        std::vector<StudentID> buddyList;
-
-        for(int i=0; i<buddyCount; i++)
-        {
-            // geneate a new buddy that not in the list
-            StudentID buddyID;
-            bool alreadyBuddy;
-
-            do {
-                buddyID = rand() % mStudentCount;
-
-                // Check if it is already in the budy list
-                alreadyBuddy = false;
-                for(StudentID sid : buddyList)
-                {
-                    if(sid == buddyID)
-                    {
-                        alreadyBuddy = true;
-                    }
-                }
-
-            } while(alreadyBuddy);
-
-            // Add buddyID to the budy list
-            buddyList.emplace_back(buddyID);
-        }
-
-        // Request buddy
-        for(const StudentID buddyID : buddyList)
-        {
-            std::ostringstream name;
-            name << "Student" << buddyID;
-            mAllStudentInfos[studentID].requestBuddy(name.str());
-        }
-    }
-    std::cout <<"\tDone\n";
 }
 
 bool DecaConference::validateStudentInfo()
@@ -522,7 +446,7 @@ void DecaConference::optimizeRoomAssignment()
         constexpr int kSecondsToExit = 25;
         if(elapsed_seconds.count() > kSecondsToExit)
         {
-            std::cout<<"\nCan't find better assignment for " << kSecondsToExit << "seconds. Finishing.\n";
+            std::cout<<"\nCan't find better assignment for " << kSecondsToExit << " seconds. Finishing.\n";
             break;
         }
         else
