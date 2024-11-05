@@ -85,6 +85,7 @@ public:
     int score(const std::vector<Student> &allStudentInfos, const std::vector<StudentID> &others) const
     {
         int score = 0;
+        int buddiesInRoom = 0;
 
         for(const StudentID &other : others)
         {
@@ -92,11 +93,13 @@ public:
             if(other == mStudentID)
                 continue;
 
-            // buddy adds one point
+//            // buddy adds one point
             if(isBuddyOf(other))
             {
-                score += 5;
+                buddiesInRoom++;
             }
+//            int numBuddies = getBuddyCount(others);
+//            int percentageNotBuddy = (numBuddies / numBuddies);
 
             // two grades apart gets penalty points
             int gradeGap = mGrade - allStudentInfos[other].mGrade;
@@ -105,6 +108,7 @@ public:
                 score -= 500;
             }
         }
+        score -= mBuddyIDs.size()-buddiesInRoom;
 
         return score;
     }
@@ -377,8 +381,8 @@ DecaConference::DecaConference():mStudentCount(0),mRoomCount(0)
 
 void DecaConference::readInputFile() {
     std::fstream fin;
-    fin.open("testing_data.csv", std::ios::in);
-
+    fin.open("old_data.csv", std::ios::in);
+//    fin.open("testing_data.csv", std::ios::in);
     std::vector<std::string> row;
     std::string line, word;
     fin >> mStudentCount;
@@ -391,19 +395,19 @@ void DecaConference::readInputFile() {
         while (getline(s, word, ',')) {
             row.push_back(word);
         }
-        int studentID = std::stoi(row[1]);
-        std::string name = row[2];
-        int grade = std::stoi(row[6]);
+        int studentID = std::stoi(row[2]);
+        std::string name = row[1];
+        int grade = std::stoi(row[3]);
         mAllStudentInfos.emplace_back(name, grade, studentID);
 
-        int numBuddies = std::stoi(row[7]);
+        int numBuddies = std::stoi(row[4]);
         for (int j = 0; j < numBuddies; j++) {
-            std::string bname = row[8+3*j];
+            std::string bname = row[5+j];
             mAllStudentInfos[studentID].requestBuddy(bname);
         }
     }
 // row[index] and info associated with it
-// {0: email, 1: studentID, 2: name, 6: grade, 7: numBuddies,
+// {0: email, 2: studentID, 1: name, 3: grade, 4: numBuddies,
 // (8, 11, 14): buddy names, (9, 12, 15): buddy grades, (10, 13, 16): buddy IDs}
     std::cout << "\tDONE\n";
 }

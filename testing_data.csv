@@ -1,15 +1,15 @@
 14
-Allison.lao@warriorlife.net,0,Allison Lao,Allison, ,Lao,12,3,Isabella Lin,12,3,Yuelan Yuan,12,9,Sophie Yang,12,7
-grace.xu@warriorlife.net,1,Grace Xu,Grace, ,Xu,11,3,Yufei Wang,12,2,Shannon Xiao,12,4,Amy Thomas,12,6
-yufei.wang@warriorlife.net,2,Yufei Wang,Yufei, ,Wang,12,3,Grace Xu,11,1,Shannon Xiao,12,4,Amy Thomas,12,6
-Isabella.lin@warriorlife.net,3,Isabella Lin,Isabella, ,Lin,12,3,Allison Lao,12,0,Yuelan Yuan,12,9,Sophie Yang,12,7
-shannon.xiao@warriorlife.net,4,Shannon Xiao,Shannon, ,Xiao,12,3,Grace Xu,11,1,Yufei Wang,12,2,Amy Thomas,12,6
-Xiaowei.zhang@warriorlife.net,5,Vivian Zhang,Vivian, ,Zhang,11,2,Allison Lao,12,0,Iris Zeng,12,8,,,
-amy.thomas@warriorlife.net,6,Amy Thomas,Amy, ,Thomas,12,3,Grace Xu,11,1,Yufei Wang,12,2,Shannon Xiao,12,4
-Sophie.yang@warriorlife.net,7,Sophie Yang,Sophie, ,Yang,12,3,Isabella Lin,12,3,Yuelan Yuan,12,9,Allison Lao,12,0
-Iris.zeng@warriorlife.net,8,Iris Zeng,Iris, ,Zeng,12,2,Vivian Zhang,11,5,Yuelan Yuan,12,9,,,
-yuelan.yuan@warriorlife.net,9,Yuelan Yuan,Yuelan, ,Yuan,12,3,Isabella Lin,12,3,Allison Lao,12,0,Sophie Yang,12,7
-random.person@warriorlife.net,10,Random Person,Random, ,Person,10,2,Other Person,10,11,Another Person,9,12,,,
-other.person@warriorlife.net,11,Other Person,Other, ,Person,10,0,,,,,,,,,
-another.person@warriorlife.net,12,Another Person,Another, ,Person,9,1,Different Person,9,13,,,,,,
-different.person@warriorilfe.net,13,Different Person,Different, ,Person,9,1,Another Person,9,12,,,,,,
+Allison.lao@warriorlife.net,Allison Lao,0,12,3,Isabella Lin,Yuelan Yuan,Sophie Yang,12,1,12,3,12,2
+Isabella.lin@warriorlife.net,Isabella Lin,1,12,3,Allison Lao,Yuelan Yuan,Sophie Yang,12,0,12,3,12,2
+Sophie.yang@warriorlife.net,Sophie Yang,2,12,3,Isabella Lin,Yuelan Yuan,Allison Lao,12,1,12,3,12,0
+yuelan.yuan@warriorlife.net,Yuelan Yuan,3,12,3,Isabella Lin,Allison Lao,Sophie Yang,12,1,12,0,12,2
+grace.xu@warriorlife.net,Grace Xu,4,11,1,Yufei Wang,Shannon Xiao,Amy Thomas,12,5,12,6,12,7
+yufei.wang@warriorlife.net,Yufei Wang,5,12,1,Grace Xu,Shannon Xiao,Amy Thomas,11,4,12,6,12,7
+shannon.xiao@warriorlife.net,Shannon Xiao,6,12,1,Amy Thomas,Grace Xu,Yufei Wang,11,7,12,4,12,5
+amy.thomas@warriorlife.net,Amy Thomas,7,12,3,Shannon Xiao,Grace Xu,Yufei Wang,11,6,12,4,12,5
+Xiaowei.zhang@warriorlife.net,Vivian Zhang,8,11,2,Allison Lao,Iris Zeng,,12,0,12,9,,
+Iris.zeng@warriorlife.net,Iris Zeng,9,12,2,Vivian Zhang,Yuelan Yuan,,11,8,12,3,,
+random.person@warriorlife.net,Random Person,10,10,0,Other Person,Another Person,,10,11,9,12,,
+other.person@warriorlife.net,Other Person,11,10,0,,,,,,,,,
+another.person@warriorlife.net,Another Person,12,9,1,Different Person,,,9,13,,,,
+different.person@warriorilfe.net,Different Person,13,9,1,Another Person,,,9,12,,,,
